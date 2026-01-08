@@ -17,7 +17,7 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0Fy4gJXrNbhJt2skWGbafW_KGP3IIOcIHWsQ6cht-uw-mtCun2RFMZ7f9xt9rR22JWV-YlX5zOtedSZPJMVVIf8IX-8TWCAnZ1eQp3ZWlc7hrw3xwPO50H0rJhXUo-ATSlfvKhVdiBSvofETuPiqFOoqkK-jyvOugbg8e-qmHdDFILcGmQX6-Iqb6G9hDM-1FC_63JZbmujy0DMydL7sgh4Hrhdlg9uiFxdqzKJ4IrhCrOm_xc0fgO66xcmbvMmxuC8QQFlXcrEGg"
-                alt="Industrial Worker"
+                alt="Experienced gold mine worker at Pearl Gold Hub extraction site"
                 className="w-full h-[600px] object-cover object-center filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
                 loading="lazy"
                 decoding="async"
@@ -60,7 +60,11 @@ const About: React.FC<AboutProps> = ({ onNavigate }) => {
             </div>
             <div className="mt-10">
               <a 
-                onClick={() => onNavigate('about')}
+                href="/?page=about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('about');
+                }}
                 className="inline-flex items-center gap-2 font-bold text-text-light dark:text-white group hover:text-primary dark:hover:text-primary transition-colors cursor-pointer"
               >
                 More about us

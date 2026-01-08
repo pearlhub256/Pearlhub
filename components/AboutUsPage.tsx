@@ -6,7 +6,7 @@ const AboutUsPage: React.FC = () => {
       <header className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            alt="Molten Gold" 
+            alt="Molten gold processing at Pearl Gold Hub refinery" 
             className="w-full h-full object-cover" 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0Fy4gJXrNbhJt2skWGbafW_KGP3IIOcIHWsQ6cht-uw-mtCun2RFMZ7f9xt9rR22JWV-YlX5zOtedSZPJMVVIf8IX-8TWCAnZ1eQp3ZWlc7hrw3xwPO50H0rJhXUo-ATSlfvKhVdiBSvofETuPiqFOoqkK-jyvOugbg8e-qmHdDFILcGmQX6-Iqb6G9hDM-1FC_63JZbmujy0DMydL7sgh4Hrhdlg9uiFxdqzKJ4IrhCrOm_xc0fgO66xcmbvMmxuC8QQFlXcrEGg"
             fetchPriority="high"
@@ -37,7 +37,7 @@ const AboutUsPage: React.FC = () => {
             <div className="relative order-2 lg:order-1 top-0 lg:sticky lg:top-32">
               <div className="relative rounded-lg overflow-hidden shadow-2xl">
                 <img 
-                  alt="Industrial Worker" 
+                  alt="Gold mining professional inspecting site" 
                   className="w-full h-[600px] object-cover object-center filter grayscale contrast-125 hover:grayscale-0 transition-all duration-700" 
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyNTGtY4jb-Rh9zXVfnWZa1Mgn9sa9chOLde8r3p6LNtpSUGcwIUIqtFSzg35aXaRjsI8zJpZ_Cn_EyIdTvd7y04yyim0wkSC0iQ-kuaZsXFwptYM1Uwu9KNwFTsP6tAb0UFCZXk2M8eTRLTkXtinTc0GBXdrSGdKsXQu8W_Fo4FJjnqFP2nnzTRLrOPOJEpTS5gxDkgdJAEarar1-JrOwS-N4fgDTCrU1U9IdXO0C-u7CF3Zv8YQpr-c4MNGl2acX_DfdyIBLD04x"
                   loading="lazy"
@@ -225,7 +225,7 @@ const AboutUsPage: React.FC = () => {
             <div className="relative h-[500px] w-full">
               <div className="absolute inset-0 bg-primary/20 transform rotate-3 rounded-lg z-0"></div>
               <img 
-                alt="Worker Holding Gold" 
+                alt="Worker holding raw gold sample" 
                 className="relative z-10 w-full h-full object-cover rounded-lg shadow-2xl" 
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG6ZyGQ3sG-tzO40GKjycOxL3ZoybG_9KGaYLRHxj2WBwQU8KcrVozZwUcjBh501dDm5IF4VOK_hkGSlSgAoEMvVd_0icnvKLA4_jw2GcufI2T3UF7VyKo3s2VfiBW204xyuL8EevgqTW94hbATlfPBvw35WJtZ_IO9TqsyXhScp6mt_SIiDHXhmpg9f3OF8da9rOLs801u79M6VyvfPIrM-bT-QGkfVSLLATLSplSx-gcD7s4UAZn0g-RxjBgIFZIz3vYTHVPyzHg"
                 loading="lazy"

@@ -38,34 +38,35 @@ function App() {
   // Define SEO data for each page
   const seoData: Record<Page, { title: string; description: string }> = {
     home: {
-      title: "Pearl Gold Hub | Premier Gold Trading & Mining Solutions Africa",
-      description: "Pearl Gold Hub connects international buyers with responsibly sourced gold from Africa. Trusted gold trading, refining services, and secure global logistics."
+      title: "Pearl Gold Hub | Ethical Gold Trading & Mining Africa",
+      description: "Trusted partner for responsibly sourced African gold. Pearl Gold Hub connects global investors with ethical mines in Uganda. Secure trading, refining & logistics."
     },
     about: {
-      title: "About Us | Pearl Gold Hub - Ethical Sourcing Leaders",
-      description: "Learn about Pearl Gold Hub's mission to revolutionize the African gold industry through transparency, ethical mining partnerships, and operational excellence."
+      title: "About Pearl Gold Hub | Trusted Gold Suppliers Uganda",
+      description: "Discover our mission to revolutionize the African gold industry. We prioritize transparency, ethical mining partnerships, and supply chain integrity."
     },
     services: {
-      title: "Services | Gold Trading, Refining & Logistics",
-      description: "Explore our end-to-end gold services: secure trading, assaying, refining, mining consultancy, and insured global export logistics."
+      title: "Gold Trading Services | Sourcing, Refining & Logistics",
+      description: "End-to-end gold solutions: Ethical sourcing, assaying, refining, mining consultancy, and secure global export logistics (Brinks/G4S)."
     },
     contact: {
-      title: "Contact Us | Pearl Gold Hub - 24/7 Support",
-      description: "Get in touch with Pearl Gold Hub for quotes, partnership inquiries, or support. Located in Kampala, serving clients worldwide. Call +256 772 653 789."
+      title: "Contact Pearl Gold Hub | Gold Trading & Mining Inquiries",
+      description: "Connect with Pearl Gold Hub in Kampala. 24/7 support for gold purchasing, mining partnerships, and logistics. Call +256 772 653 789 or email info@pearlgoldhub.com."
     },
     projects: {
-      title: "Our Projects | Portfolio of Mining & Logistics Operations",
-      description: "View our active mining projects, community refineries, and logistics hubs across East Africa. Sustainable extraction and secure holding facilities."
+      title: "Mining Projects & Refineries | Pearl Gold Hub Portfolio",
+      description: "Explore our active sustainable mining projects, community refineries, and secure logistics hubs across East Africa. investing in local growth."
     },
     privacy: {
       title: "Privacy Policy | Pearl Gold Hub",
-      description: "Our commitment to protecting your personal data and ensuring privacy in all our trading and digital interactions."
+      description: "We are committed to protecting your personal data and ensuring privacy in all our international gold trading and digital interactions."
     }
   };
 
   // Generate Page Specific Schema
   const getPageSchema = (page: Page) => {
     const baseUrl = 'https://pearlgoldhub.com';
+    const currentUrl = page === 'home' ? baseUrl : `${baseUrl}/?page=${page}`;
     
     // 1. BreadcrumbList Schema (Standard for all pages)
     const breadcrumb = {
@@ -86,14 +87,26 @@ function App() {
         "@type": "ListItem",
         "position": 2,
         "name": page.charAt(0).toUpperCase() + page.slice(1),
-        "item": `${baseUrl}?page=${page}`
+        "item": currentUrl
       });
     }
 
     const schemas: any[] = [breadcrumb];
 
-    // 2. FAQ Schema for Home
+    // 2. WebSite Schema for Home
     if (page === 'home') {
+       schemas.push({
+         "@context": "https://schema.org",
+         "@type": "WebSite",
+         "name": "Pearl Gold Hub",
+         "url": baseUrl,
+         "potentialAction": {
+           "@type": "SearchAction",
+           "target": `${baseUrl}/?q={search_term_string}`,
+           "query-input": "required name=search_term_string"
+         }
+       });
+       
        schemas.push({
          "@context": "https://schema.org",
          "@type": "FAQPage",
@@ -162,13 +175,22 @@ function App() {
             "mainEntity": {
                  "@type": "Corporation",
                  "name": "Pearl Gold Hub",
+                 "url": baseUrl,
                  "telephone": "+256-772-653-789",
                  "email": "info@pearlgoldhub.com",
                  "address": {
                     "@type": "PostalAddress",
+                    "streetAddress": "Plot 45, Mining District",
                     "addressLocality": "Kampala",
                     "addressRegion": "Central Region",
                     "addressCountry": "UG"
+                 },
+                 "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+256-772-653-789",
+                    "contactType": "sales",
+                    "areaServed": "Global",
+                    "availableLanguage": "English"
                  }
             }
         });
@@ -223,11 +245,17 @@ function App() {
     }
   };
 
+  // Generate dynamic canonical URL
+  const canonicalUrl = currentPage === 'home' 
+    ? 'https://pearlgoldhub.com' 
+    : `https://pearlgoldhub.com/?page=${currentPage}`;
+
   return (
     <div className="font-body min-h-screen flex flex-col">
       <SEO 
         title={currentSEO.title} 
         description={currentSEO.description}
+        canonical={canonicalUrl}
         schema={getPageSchema(currentPage)}
       />
       

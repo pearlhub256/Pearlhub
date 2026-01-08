@@ -20,7 +20,8 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentPage, 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (page: Page, id?: string) => {
+  const handleNavClick = (e: React.MouseEvent, page: Page, id?: string) => {
+    e.preventDefault();
     onNavigate(page);
     setIsMobileMenuOpen(false);
     
@@ -44,6 +45,9 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentPage, 
     return `${baseClass} text-gray-300 hover:text-primary`;
   };
 
+  // Helper for generating hrefs
+  const getHref = (page: Page) => page === 'home' ? '/' : `/?page=${page}`;
+
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -55,9 +59,10 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentPage, 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div 
+          <a 
+            href="/"
             className="flex-shrink-0 flex items-center gap-2 cursor-pointer" 
-            onClick={() => handleNavClick('home')}
+            onClick={(e) => handleNavClick(e, 'home')}
           >
             <div className="w-8 h-8 bg-gradient-to-br from-primary to-yellow-500 rounded flex items-center justify-center">
               <i className="ph-fill ph-cube text-white text-xl"></i>
@@ -65,20 +70,20 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentPage, 
             <span className="font-display font-bold text-white text-xl tracking-wide uppercase">
               Pearl Gold Hub
             </span>
-          </div>
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            <a onClick={() => handleNavClick('home')} className={getLinkClass('home')}>
+            <a href={getHref('home')} onClick={(e) => handleNavClick(e, 'home')} className={getLinkClass('home')}>
               Home
             </a>
-            <a onClick={() => handleNavClick('about')} className={getLinkClass('about')}>
+            <a href={getHref('about')} onClick={(e) => handleNavClick(e, 'about')} className={getLinkClass('about')}>
               About Us
             </a>
-            <a onClick={() => handleNavClick('services')} className={getLinkClass('services')}>
+            <a href={getHref('services')} onClick={(e) => handleNavClick(e, 'services')} className={getLinkClass('services')}>
               Services
             </a>
-            <a onClick={() => handleNavClick('contact')} className={getLinkClass('contact')}>
+            <a href={getHref('contact')} onClick={(e) => handleNavClick(e, 'contact')} className={getLinkClass('contact')}>
               Contact us
             </a>
           </div>
@@ -97,7 +102,8 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentPage, 
               )}
             </button>
             <a
-              onClick={() => handleNavClick('contact')}
+              href={getHref('contact')}
+              onClick={(e) => handleNavClick(e, 'contact')}
               className="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded font-medium transition-colors flex items-center gap-2 cursor-pointer"
             >
               Get In Touch <i className="ph ph-arrow-up-right"></i>
@@ -126,12 +132,12 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode, currentPage, 
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black/95 border-b border-white/10">
           <div className="px-4 pt-2 pb-6 space-y-2">
-            <a onClick={() => handleNavClick('home')} className="block text-white hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">Home</a>
-            <a onClick={() => handleNavClick('about')} className="block text-gray-300 hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">About Us</a>
-            <a onClick={() => handleNavClick('services')} className="block text-gray-300 hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">Services</a>
-            <a onClick={() => handleNavClick('contact')} className="block text-gray-300 hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">Contact</a>
+            <a href={getHref('home')} onClick={(e) => handleNavClick(e, 'home')} className="block text-white hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">Home</a>
+            <a href={getHref('about')} onClick={(e) => handleNavClick(e, 'about')} className="block text-gray-300 hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">About Us</a>
+            <a href={getHref('services')} onClick={(e) => handleNavClick(e, 'services')} className="block text-gray-300 hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">Services</a>
+            <a href={getHref('contact')} onClick={(e) => handleNavClick(e, 'contact')} className="block text-gray-300 hover:text-primary py-2 font-medium uppercase tracking-wider cursor-pointer">Contact</a>
             <div className="pt-4 mt-4 border-t border-white/10">
-              <a onClick={() => handleNavClick('contact')} className="block w-full text-center bg-primary text-white py-3 rounded font-bold uppercase cursor-pointer">
+              <a href={getHref('contact')} onClick={(e) => handleNavClick(e, 'contact')} className="block w-full text-center bg-primary text-white py-3 rounded font-bold uppercase cursor-pointer">
                 Get In Touch
               </a>
             </div>

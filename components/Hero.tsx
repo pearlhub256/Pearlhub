@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0">
         <img
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_fBVxmSbwcZrvjplWkBg0H67846rO3LifniLmxJeS-yaxKxwef9Z0WLlzEUQ-xVjrF4FbSfPHpqlFMMZD6bWY4A6w2VZ4qF-GSUJIUSf5TIRgrd9vq9fC3tvw3xVDQ7wcBvPIdDwJrB9pz8sBM33NI5WxBus_p6sFKsPhRK82E4itoRhQmgwRaCAsAzcr6yVc4of367JZrwiMYZk8AXXfqt617phrH2i_3j2gUm3P4NobfpXnIBiDqRdDAF2Zp-xWgINqec5GmN_M"
-          alt="Molten Gold"
+          alt="Molten Gold refining process at Pearl Gold Hub"
           className="w-full h-full object-cover"
           fetchPriority="high"
         />

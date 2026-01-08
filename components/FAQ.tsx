@@ -30,7 +30,7 @@ const FAQ: React.FC<FAQProps> = ({ onNavigate }) => {
           <div className="relative h-[500px] rounded-lg overflow-hidden shadow-lg order-2 lg:order-1">
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6WlfkCLHVqj7TAV2Mr8QrHXoZ_EQy9fhY2HtrXfpApOr8yIH_W_kdqKmJooprHqjKP0tEw_XCncUupRS7iLRd6fRzrI5mLiqvV7JsSD7UDDcci7_WqGXaYvaNdz48MBYYVG28OK4zN2KYb8R_esIXGZJQhlqQ_QyukR39nH2RdE82CCwc1QBkXbiFa019gr621Ho6Ius7LNZBGY9MAaMnGYizTJ8X-y7Lew3OiEw77p2wxgzAy50ogs5kaJGCDPA_tG3adkqfyyEA"
-              alt="Lab Scale"
+              alt="Lab Scale for gold weighing and testing"
               className="w-full h-full object-cover"
               loading="lazy"
               decoding="async"
@@ -74,7 +74,11 @@ const FAQ: React.FC<FAQProps> = ({ onNavigate }) => {
             </div>
             <div className="mt-10">
               <a 
-                onClick={() => onNavigate('services')}
+                href="/?page=services"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('services');
+                }}
                 className="inline-flex items-center gap-2 font-bold text-text-light dark:text-white group hover:text-primary transition-colors text-sm uppercase tracking-wide cursor-pointer"
               >
                 View all Services

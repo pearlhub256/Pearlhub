@@ -6,7 +6,8 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const handleNavClick = (page: Page, id?: string) => {
+  const handleNavClick = (e: React.MouseEvent, page: Page, id?: string) => {
+    e.preventDefault();
     onNavigate(page);
     if (page === 'home' && id) {
         setTimeout(() => {
@@ -16,6 +17,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const getHref = (page: Page) => page === 'home' ? '/' : `/?page=${page}`;
 
   return (
     <footer id="contact" className="bg-black text-white pt-20 pb-8">
@@ -41,24 +44,24 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <a href="mailto:info@pearlgoldhub.com" className="hover:text-primary transition-colors">info@pearlgoldhub.com</a>
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><i className="ph-fill ph-x-logo text-lg"></i></a>
-              <a href="#" className="text-gray-400 hover:text-primary transition-colors"><i className="ph-fill ph-instagram-logo text-lg"></i></a>
+              <a href="https://twitter.com/pearlgoldhub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors" aria-label="Twitter"><i className="ph-fill ph-x-logo text-lg"></i></a>
+              <a href="https://instagram.com/pearlgoldhub" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors" aria-label="Instagram"><i className="ph-fill ph-instagram-logo text-lg"></i></a>
             </div>
           </div>
           <div>
             <h3 className="text-white font-bold mb-6">Quick Links</h3>
             <ul className="space-y-4 text-gray-400 text-sm">
-              <li><a onClick={() => handleNavClick('home')} className="hover:text-primary transition-colors cursor-pointer">Home</a></li>
-              <li><a onClick={() => handleNavClick('about')} className="hover:text-primary transition-colors cursor-pointer">About Us</a></li>
-              <li><a onClick={() => handleNavClick('services')} className="hover:text-primary transition-colors cursor-pointer">Services</a></li>
+              <li><a href={getHref('home')} onClick={(e) => handleNavClick(e, 'home')} className="hover:text-primary transition-colors cursor-pointer">Home</a></li>
+              <li><a href={getHref('about')} onClick={(e) => handleNavClick(e, 'about')} className="hover:text-primary transition-colors cursor-pointer">About Us</a></li>
+              <li><a href={getHref('services')} onClick={(e) => handleNavClick(e, 'services')} className="hover:text-primary transition-colors cursor-pointer">Services</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-white font-bold mb-6">Links</h3>
             <ul className="space-y-4 text-gray-400 text-sm">
-              <li><a onClick={() => handleNavClick('projects')} className="hover:text-primary transition-colors cursor-pointer">Projects</a></li>
-              <li><a onClick={() => handleNavClick('contact')} className="hover:text-primary transition-colors cursor-pointer">Contact</a></li>
-              <li><a onClick={() => handleNavClick('privacy')} className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</a></li>
+              <li><a href={getHref('projects')} onClick={(e) => handleNavClick(e, 'projects')} className="hover:text-primary transition-colors cursor-pointer">Projects</a></li>
+              <li><a href={getHref('contact')} onClick={(e) => handleNavClick(e, 'contact')} className="hover:text-primary transition-colors cursor-pointer">Contact</a></li>
+              <li><a href={getHref('privacy')} onClick={(e) => handleNavClick(e, 'privacy')} className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</a></li>
             </ul>
           </div>
         </div>

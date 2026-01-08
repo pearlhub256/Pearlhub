@@ -41,7 +41,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate }) => {
       <header className="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-background-dark">
         <div className="absolute inset-0 z-0">
           <img 
-            alt="Mining Site" 
+            alt="Aerial view of Pearl Gold Hub sustainable mining operations in Uganda" 
             className="w-full h-full object-cover opacity-50" 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBxVRdtHaZd29R-2z0UmB1dJ5Ca06c-J4fpgFuIE7fIKOyNJkwgM0JKrMLc0Zv04ykqHeuSshTw8gdZJGFGp_j5O6YdgD5ob4ngymKxNspOLwDgUId1yky9oCn-SIzmeN-HkTBQHpBinVu7gJHlxm7tvaX0iJO6uMHP1BEle9ZXDMjg6CfPWBpWVrXoaaLxNJ-mb0KTpPA31EKZA9njcNcoLra7nol5I0eqIvzgmaDgHoUrCG9Xkyzs-JAizEdfKASLfbbyoiTOEs"
             fetchPriority="high"
@@ -115,7 +115,11 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({ onNavigate }) => {
             We are always looking for new investment opportunities and partnerships in the mining sector.
           </p>
           <a 
-            onClick={() => onNavigate('contact')}
+            href="/?page=contact"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('contact');
+            }}
             className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-bold transition-all cursor-pointer"
           >
             Discuss Partnership <i className="ph-bold ph-arrow-right"></i>

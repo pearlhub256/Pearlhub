@@ -6,6 +6,7 @@ interface SEOProps {
   canonical?: string;
   type?: string;
   schema?: Record<string, any> | Record<string, any>[];
+  robots?: string;
 }
 
 const SEO: React.FC<SEOProps> = ({ 
@@ -13,7 +14,8 @@ const SEO: React.FC<SEOProps> = ({
   description, 
   canonical = typeof window !== 'undefined' ? window.location.href : '',
   type = 'website',
-  schema
+  schema,
+  robots = 'index, follow'
 }) => {
   useEffect(() => {
     // Update Title
@@ -43,6 +45,8 @@ const SEO: React.FC<SEOProps> = ({
 
     // Standard Meta
     updateMeta('description', description);
+    updateMeta('robots', robots);
+    
     if (canonical) {
         updateLink('canonical', canonical);
     }
@@ -63,7 +67,7 @@ const SEO: React.FC<SEOProps> = ({
     updateMeta('twitter:description', description);
     updateMeta('twitter:image', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDcDqWjxpXr6SgYOkz1HmKqVHn9KtduTTokuKt3jgm6mFMWqCNWTR9AFrIK2AO8kAb1n5w5I_fyuKxL7PjhWRdLRQdawy8rotlouLwRDgwruORtQfPsoJGP7cG1ufH9GGWXfYssY8rSPOFO45yxDTvCP4JoXnrcESUhxo1tDponoYH2CC_uatyx98FN4zRNYP7f7S0lAYAR1GbDlK4liwpIQakHBYa9QK2DfIQqlD2cJW3t1h5M6R44GrWyA6wkNuiJLp59ti3yLdI');
 
-  }, [title, description, canonical, type]);
+  }, [title, description, canonical, type, robots]);
 
   // Base Structured Data (JSON-LD) for Local Business/Corporation
   const baseSchema = {
@@ -76,7 +80,7 @@ const SEO: React.FC<SEOProps> = ({
       "@type": "ContactPoint",
       "telephone": "+256-772-653-789",
       "contactType": "customer service",
-      "areaServed": ["UG", "AE", "US", "EU"],
+      "areaServed": "Global",
       "availableLanguage": ["English"]
     },
     "sameAs": [
@@ -86,6 +90,7 @@ const SEO: React.FC<SEOProps> = ({
     ],
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Plot 45, Mining District",
       "addressLocality": "Kampala",
       "addressRegion": "Central Region",
       "addressCountry": "UG"

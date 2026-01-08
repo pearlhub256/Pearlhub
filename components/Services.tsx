@@ -42,7 +42,11 @@ const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
               </div>
             </div>
             <a 
-              onClick={() => onNavigate('contact')}
+              href="/?page=contact"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('contact');
+              }}
               className="inline-flex items-center gap-2 font-bold text-text-light dark:text-white group hover:text-primary transition-colors cursor-pointer"
             >
               Contact Us
@@ -56,7 +60,7 @@ const Services: React.FC<ServicesProps> = ({ onNavigate }) => {
             <div className="relative h-[500px] w-full">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx8dbWM9ByCGQgvH2OcD5N8TVH7vy0jvZVK2Nlt-hTaIwkC2Fm0Xn21tY804XM7Ub2NhgX4deiT07p78liXjBVhZIud0EEK4erelApnjt1vgQeKIgAUllI-jnc62RPmD_WvZ5LZvGbddJ2TJNwR1oHKtqRQm6Ji9VE7GuyuCjC1GAL3Un-7EGqXE0XVDb94gCbvoKkIXW5yHD33Nb9Rg3kj64XQQ32RSVrPW6UHarHlHDyVnFyD3jhBmt2N5aRsBgoCkx2dUhjVZNO"
-                alt="Worker Holding Gold"
+                alt="Miner displaying raw gold nugget"
                 className="w-full h-full object-cover rounded shadow-lg"
                 loading="lazy"
                 decoding="async"

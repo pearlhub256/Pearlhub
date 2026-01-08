@@ -11,7 +11,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
       <header className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            alt="Molten Gold" 
+            alt="Molten gold being poured into ingots at refinery" 
             className="w-full h-full object-cover" 
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU7ondVvKrFGO6WYQaheewY_MwQiy-JRHbBJkFfea---FaJJehlQz3WF5ktj7GsjzidELvu_B5pUCMg2sLyFTIVb8KiuniRWyvVZQ32902LmKLBxu5KPnfqp1uCttmchSfJi46MMNiL-_Fudw_PaZADR_LB98bbTgQ7qxDU0qwoo-sBoPgfGq7k3MKFbimFSi7aL5X2j2qqM8IAZeXRqILaAA1NoHtBHcx-1iXrK62nATMcenm25zVWZw3o3H-az7wL5hyQx_Q1MyB"
             fetchPriority="high"
@@ -349,13 +349,21 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
-              onClick={() => onNavigate('contact')}
+              href="/?page=contact"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('contact');
+              }}
               className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded font-bold transition-all shadow-lg hover:shadow-primary/50 flex items-center justify-center gap-2 cursor-pointer"
             >
               Get a Quote <i className="ph-bold ph-arrow-right"></i>
             </a>
             <a 
-              onClick={() => onNavigate('contact')}
+              href="/?page=contact"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('contact');
+              }}
               className="bg-white dark:bg-surface-dark text-text-light dark:text-white border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary px-8 py-4 rounded font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               Contact Support
