@@ -6,6 +6,7 @@ import Process from './Process';
 import Sustainability from './Sustainability';
 import Testimonials from './Testimonials';
 import FAQ from './FAQ';
+import HomeContact from './HomeContact';
 import { Page } from '../types';
 
 interface HomeProps {
@@ -22,6 +23,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <Sustainability />
       <Testimonials />
       <FAQ onNavigate={onNavigate} />
+      <HomeContact />
     </>
   );
 };
