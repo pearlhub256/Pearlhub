@@ -1,0 +1,4 @@
+## 2024-08-05 - Hardcoded API Key in Vite Config
+**Vulnerability:** The `GEMINI_API_KEY` was exposed to the client-side bundle through the `define` property in `vite.config.ts`. This makes the secret key visible in the browser's JavaScript code.
+**Learning:** The Vite `define` config is a common pattern for exposing environment variables, but it's often misused for server-side secrets, leading to leaks. The key was likely added for a feature that was never implemented or was removed, but the key exposure remained.
+**Prevention:** Never use Vite's `define` property for server-side or private API keys. All client-exposed variables should be prefixed with `VITE_` (e.g., `VITE_PUBLIC_API_KEY`) and should be considered public. Server-side logic should handle sensitive keys, and the client should call the server, not the service provider directly.
