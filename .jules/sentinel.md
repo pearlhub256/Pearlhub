@@ -1,0 +1,4 @@
+## 2024-07-25 - Exposed API Key in Vite Config
+**Vulnerability:** An API key (`GEMINI_API_KEY`) was hardcoded in the `define` section of `vite.config.ts`.
+**Learning:** The `define` property in Vite's configuration makes values available to client-side code, which is a significant security risk for secrets. This is a known vulnerability pattern in this repository.
+**Prevention:** Environment variables intended for the server-side should never be exposed to the client through Vite's `define` configuration. Use `import.meta.env.VITE_*` for client-side environment variables, and ensure that no sensitive keys are prefixed with `VITE_`.
