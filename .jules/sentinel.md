@@ -1,0 +1,4 @@
+## 2024-08-05 - Vite Config Secret Exposure
+**Vulnerability:** The `vite.config.ts` file used the `define` property to expose the `GEMINI_API_KEY` from environment variables directly to the client-side bundle as `process.env.GEMINI_API_KEY`.
+**Learning:** This makes the secret key publicly accessible to anyone inspecting the built JavaScript files, posing a severe security risk. The key was not even used in the client-side code, meaning it was exposed for no reason. This is a critical vulnerability pattern to watch for in this repository.
+**Prevention:** Never use the `define` property in `vite.config.ts` or similar build configurations to expose sensitive keys to the frontend. All API calls requiring secret keys must be handled by a secure backend. Always audit the build configuration for potential secret leaks.
