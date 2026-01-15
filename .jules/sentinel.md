@@ -1,0 +1,4 @@
+## 2024-08-05 - Unnecessary API Key Exposure in Vite Config
+**Vulnerability:** The `vite.config.ts` file was configured to expose the `GEMINI_API_KEY` from environment variables to the client-side bundle using the `define` property.
+**Learning:** The key was a leftover from the initial project setup or a boilerplate template, but was never actually used in the application's source code. This highlights the risk of not cleaning up unused configurations, which can lead to inadvertent secret exposure.
+**Prevention:** Regularly review build configurations (`vite.config.ts`, `webpack.config.js`, etc.) for any `define` or `EnvironmentPlugin` usage that might expose environment variables to the client. Only expose variables that are explicitly non-sensitive and required by the client-side application. Also, periodically audit environment variables to remove unused ones.
