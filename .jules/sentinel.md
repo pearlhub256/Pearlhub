@@ -1,0 +1,7 @@
+## 2024-08-05 - Vite `define` Configuration Exposes Secrets
+
+**Vulnerability:** The `vite.config.ts` file used the `define` property to expose environment variables (specifically `GEMINI_API_KEY`) directly to the client-side bundle. This hardcodes the secret into the application's JavaScript files, making it publicly accessible.
+
+**Learning:** This configuration is a critical security risk. The `define` feature in Vite is a powerful tool for injecting global constants, but it should never be used for secrets. The key was loaded from the environment but then immediately exposed. Even though a `grep` search showed the key wasn't actively used in the application's source code, its presence in the build output is a vulnerability in itself, as it could be left over from a previous feature or intended for a future one.
+
+**Prevention:** All secrets must be handled by a secure backend or serverless function that can proxy API calls without ever exposing the key to the client. The `define` block in `vite.config.ts` should be audited regularly to ensure no sensitive information is being leaked. Environment variables intended for the client-side *must* be prefixed with `VITE_` (e.g., `VITE_PUBLIC_API_KEY`) and should never contain secrets.
