@@ -10,10 +10,10 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
+      // 🛡️ SECURITY WARNING: Do not use 'define' to expose secrets to the client bundle.
+      // Vite automatically prevents environment variable leakage. Only variables
+      // prefixed with 'VITE_' are exposed via import.meta.env.VITE_...
+      // The previous 'define' block was removed to prevent accidental leakage of GEMINI_API_KEY.
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
