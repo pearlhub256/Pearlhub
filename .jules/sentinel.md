@@ -1,0 +1,4 @@
+## 2025-05-14 - Exposing secrets in Vite config via 'define'
+**Vulnerability:** Private API keys (like `GEMINI_API_KEY`) were being injected into the client-side bundle using the `define` property in `vite.config.ts`.
+**Learning:** Even if the keys are not explicitly used in the source code, they may still be injected if the keys are found in the environment and `define` is configured to replace them. In this case, the keys were not used, but the configuration itself was a security risk and encouraged insecure development practices (like adding keys to `.env.local` for a frontend-only app).
+**Prevention:** Avoid using the `define` property in Vite to expose sensitive environment variables. Use the `VITE_` prefix for variables intended for the client, and ensure they do not contain secrets. Always use a backend proxy for sensitive API calls.

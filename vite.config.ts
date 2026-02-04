@@ -10,10 +10,9 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
+      // 🛡️ Sentinel: Removed 'define' block that exposed GEMINI_API_KEY to the client bundle.
+      // Secrets should never be injected into client-side code as they can be easily extracted.
+      // If client-side environment variables are needed, use the VITE_ prefix (e.g., VITE_API_URL).
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
