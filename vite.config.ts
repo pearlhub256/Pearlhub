@@ -10,10 +10,12 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
+      /*
+       * SECURITY WARNING: Do not use the 'define' block to expose sensitive
+       * environment variables (like API keys) to the client-side bundle.
+       * This is a frontend-only application, and any secrets defined here
+       * will be visible in the public source code.
+       */
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
