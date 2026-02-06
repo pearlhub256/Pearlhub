@@ -1,0 +1,4 @@
+## 2026-02-06 - Insecure Secret Injection via Vite `define`
+**Vulnerability:** The application's `vite.config.ts` was configured to inject `GEMINI_API_KEY` into the client-side bundle using the `define` property.
+**Learning:** This pattern is highly insecure for frontend-only applications because any value injected this way is baked into the public JavaScript bundle and can be extracted by anyone visiting the site. The `README.md` also encouraged this insecure practice.
+**Prevention:** Avoid using `define` or `import.meta.env` to expose sensitive secrets in frontend bundles. For applications requiring secret keys, implement a backend proxy or use server-side environment variables if the platform supports it (and ensures they aren't leaked to the client). Always add comments in configuration files to warn about this risk.
